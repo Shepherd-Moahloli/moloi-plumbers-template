@@ -1,0 +1,39 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Emergency Plumbing",
+      "description": "24/7 emergency plumbing services to handle urgent issues like leaks, clogs, and burst pipes.",
+      "price": "Starting at $150",
+      "image": "images/emergency-plumbing.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Drain Cleaning",
+      "description": "Professional drain cleaning services to remove blockages and ensure proper drainage.",
+      "price": "Starting at $100",
+      "image": "images/drain-cleaning.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Water Heater Installation",
+      "description": "Expert installation of water heaters, including tankless and traditional models.",
+      "price": "Starting at $800",
+      "image": "images/water-heater-installation.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Pipe Repair and Replacement",
+      "description": "Comprehensive pipe repair and replacement services to fix leaks and prevent future issues.",
+      "price": "Contact us for a quote",
+      "image": "images/pipe-repair.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Bathroom Remodeling",
+      "description": "Full-service bathroom remodeling to enhance functionality and aesthetics.",
+      "price": "Contact us for a quote",
+      "image": "images/bathroom-remodeling.jpg"
+    }
+  ]
+}

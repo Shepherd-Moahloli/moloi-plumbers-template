@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moloi Plumbers CC</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+  </head>
+  <body>
+    <!-- Header Component -->
+    <header class="site-header" id="site-header">
+      <div class="container header-inner">
+        <a href="#home" class="logo" aria-label="Moloi Plumbers CC home">
+          <!-- try local image first; if missing, fall back to a random placeholder -->
+          <img
+            src="images/logo.png"
+            alt="Moloi Plumbers CC Logo"
+            width="80"
+            height="80"
+            onerror="
+              this.onerror = null;
+              this.src = 'https://picsum.photos/seed/plumber/80';
+            "
+          />
+        </a>
+
+        <nav class="main-nav" id="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a class="phone" href="tel: 011 443 1949 ">+27 11 443 1949</a>
+          <a class="btn primary" href="#contact">Get a Quote</a>
+
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="main-nav"
+            aria-label="Toggle navigation"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section (full-bleed, left-aligned content) -->
+    <section class="hero" role="banner" aria-label="Moloi Plumbers hero">
+      <!-- sliding images (background) -->
+      <div class="hero-slides" aria-hidden="true">
+        <img
+          src="images/exec-da9b789d-c85b-4e54-a7ef-89726a7a3d73.png"
+          alt="Plumbing crew on site"
+          onerror="
+            this.onerror = null;
+            this.src = 'https://picsum.photos/seed/hero1/1600/900';
+          "
+        />
+        <img
+          src="images/exec-8114866e-6afe-4f69-a3fc-574bc3947101.png"
+          alt="Plumber repairing pipe"
+          onerror="
+            this.onerror = null;
+            this.src = 'https://picsum.photos/seed/hero2/1600/900';
+          "
+        />
+        <img
+          src="images/exec-bbf3c7d9-a370-474f-8d38-1e287108eb22.png"
+          alt="Tools and van ready for service"
+          onerror="
+            this.onerror = null;
+            this.src = 'https://picsum.photos/seed/hero3/1600/900';
+          "
+        />
+      </div>
+
+      <div class="hero-inner container">
+        <div class="hero-content">
+          <h1>Welcome to Moloi Plumbers CC</h1>
+          <p class="lead">
+            Fast, reliable plumbing in Alexandra and greater Johannesburg.
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn primary" href="#contact">Get a Fast Quote</a>
+            <a
+              class="btn whatsapp"
+              href="https://wa.me/27114431949?text=Hi%20Moloi%20Plumbers%20CC%2C%20I%20need%20a%20quick%20quote."
+              target="_blank"
+              rel="noopener noreferrer"
+              >WhatsApp Us</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Quote / Plumbers at Work (new) -->
+    <section class="quick-quote" aria-labelledby="qq-heading">
+      <div class="container qq-inner">
+        <div class="qq-image" aria-hidden="true">
+          <img
+            src="images/exec-7c577e38-054c-4761-90ea-c11403bea964.png"
+            alt="Plumbers working on pipes"
+            loading="lazy"
+            onerror="
+              this.onerror = null;
+              this.src = 'https://picsum.photos/seed/plumbers/800/800';
+            "
+          />
+        </div>
+
+        <div class="qq-content">
+          <h2 id="qq-heading">Plumbers on the Job — Fast, Reliable</h2>
+          <p>
+            Our team is ready to handle emergencies, installations and
+            maintenance. Get a fast, no‑obligation quote and we’ll be with you
+            shortly.
+          </p>
+
+          <div class="qq-actions">
+            <a class="btn outline-success" href="#contact">Get a Fast Quote</a>
+
+            <!-- WhatsApp quick contact -->
+            <a class="btn whatsapp" aria-label="Chat with us on WhatsApp">
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- decorative animated flow bar (left → right) -->
+      <div class="flow-bar" aria-hidden="true"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section
+      id="services"
+      class="services container"
+      aria-labelledby="services-heading"
+    >
+      <div class="section-header">
+        <div class="pretitle">WHAT WE DO</div>
+        <!-- small uppercase label -->
+        <h2>Our Plumbing Services</h2>
+        <!-- main title -->
+        <p class="subtitle">
+          Fast, reliable plumbing — from emergency repairs to full
+          installations. Safety, clear pricing and rapid response guaranteed.
+        </p>
+      </div>
+
+      <div class="service-grid" role="list">
+        <article class="service-card" role="listitem">
+          <figure>
+            <img
+              src="images/emergency-plumbing-web.jpg"
+              alt="Emergency plumbing"
+              loading="lazy"
+            />
+            <figcaption>
+              <h3>Emergency Plumbing</h3>
+              <p>24/7 emergency plumbing services to address urgent issues.</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="service-card" role="listitem">
+          <figure>
+            <img
+              src="images/leak-detection-web.jpg"
+              alt="Leak detection"
+              loading="lazy"
+            />
+            <figcaption>
+              <h3>Leak Detection</h3>
+              <p>Advanced leak detection services to prevent water damage.</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="service-card" role="listitem">
+          <figure>
+            <img
+              src="images/drain-cleaning-web.jpg"
+              alt="Drain cleaning"
+              loading="lazy"
+            />
+            <figcaption>
+              <h3>Drain Cleaning</h3>
+              <p>Professional drain cleaning to ensure smooth water flow.</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="service-card" role="listitem">
+          <figure>
+            <img
+              src="images/installation-services-web.jpg"
+              alt="Installation services"
+              loading="lazy"
+            />
+            <figcaption>
+              <h3>Installation Services</h3>
+              <p>Expert installation of plumbing fixtures and appliances.</p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="service-card" role="listitem">
+          <figure>
+            <img
+              src="images/maintenance-services-web.jpg"
+              alt="Maintenance services"
+              loading="lazy"
+            />
+            <figcaption>
+              <h3>Maintenance Services</h3>
+              <p>
+                Regular maintenance to keep your plumbing system in top shape.
+              </p>
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="service-card" role="listitem">
+          <figure>
+            <img
+              src="images/emergency-plumbing-web.jpg"
+              alt="General plumbing services"
+              loading="lazy"
+            />
+            <figcaption>
+              <h3>General Plumbing</h3>
+              <p>Repairs, inspections and general plumbing work.</p>
+            </figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+      <div class="container">
+        <div class="wc-inner">
+          <div class="wc-text">
+            <small class="wc-label">Who we are</small>
+            <h2>Why Choose Us?</h2>
+            <p>
+              With over 16 years of experience, our team delivers fast, reliable
+              plumbing — from emergency repairs to full installations. We
+              prioritise safety, clear pricing and rapid response so you get the
+              job done right the first time.
+            </p>
+
+            <div class="wc-cta">
+              <a href="#quote" class="btn outline-success">Get a Quick Quote</a>
+              <a href="https://wa.me/your-number" class="btn whatsapp"
+                >WhatsApp Us</a
+              >
+            </div>
+          </div>
+
+          <div class="wc-image" aria-hidden="false">
+            <img
+              src="images/exec-14bc7d54-9116-4261-bfa3-9aba06878b6c.png"
+              alt="Plumbers with service vans"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business / Prospect Details -->
+
+    <!-- Service Area map + areas list -->
+    <section id="service-area" class="service-area">
+      <div class="container service-area-inner">
+        <div class="map-panel" aria-hidden="false">
+          <div class="map-wrap">
+            <iframe
+              class="service-map"
+              src="https://maps.google.com/maps?q=Sandton%20South%20Africa&output=embed"
+              loading="lazy"
+              title="Service area map - Sandton and surrounding areas"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+
+        <aside class="areas-panel" aria-labelledby="areas-heading">
+          <div class="section-header">
+            <div class="pretitle">WHERE WE WORK</div>
+            <h2 id="areas-heading">
+              Plumber in Sandton &amp; Surrounding Areas
+            </h2>
+            <p class="subtitle">
+              We cover all major suburbs across Sandton and Northern
+              Johannesburg. Fast response times guaranteed across our full
+              service area.
+            </p>
+          </div>
+
+          <ul class="areas-list" aria-label="List of service areas">
+            <li>Alexandra</li>
+            <li>Johannesburg</li>
+            <li>Sandton</li>
+            <li>Midrand</li>
+            <li>Fourways</li>
+            <li>Kempton Park</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+    <!-- end Service Area -->
+
+    <!-- Footer Component -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-left">
+          <a href="#home" class="footer-logo" aria-label="Moloi Plumbers home">
+            <img
+              src="images/logo.png"
+              alt="Moloi Plumbers CC Logo"
+              width="84"
+              height="84"
+              onerror="
+                this.onerror = null;
+                this.src = 'https://picsum.photos/seed/plumber/84';
+              "
+            />
+          </a>
+          <p class="footer-desc">
+            Moloi Plumbers — trusted local plumbers servicing Alexandra &
+            greater Johannesburg. Licensed, insured and available 24/7.
+          </p>
+
+          <div class="footer-badges" aria-hidden="true">
+            <span class="badge">PIRB Licensed</span>
+            <span class="badge">Fully Insured</span>
+            <span class="badge">5‑Star Rated</span>
+          </div>
+
+          <div class="footer-social">
+            <div class="icons">
+              <a
+                class="social-icon"
+                href="https://www.facebook.com/YourPage"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+              >
+                <img src="icons/facebook.svg" alt="" aria-hidden="true" />
+              </a>
+              <a
+                class="social-icon"
+                href="https://www.instagram.com/YourPage"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+              >
+                <img src="icons/instagram.svg" alt="" aria-hidden="true" />
+              </a>
+              <a
+                class="social-icon"
+                href="https://wa.me/27737078085"
+                target="_blank"
+                rel="noopener"
+                aria-label="WhatsApp"
+              >
+                <img src="icons/whatsapp.svg" alt="" aria-hidden="true" />
+              </a>
+              <!-- add more icons as needed: <a ...><img src="icons/twitter.svg" ...></a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-middle">
+          <div class="footer-col">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#services">Emergency Plumbing</a></li>
+              <li><a href="#services">Leak Detection</a></li>
+              <li><a href="#services">Drain Cleaning</a></li>
+              <li><a href="#services">Installations</a></li>
+              <li><a href="#services">Maintenance</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <h4>Contact Us</h4>
+
+          <div class="contact-item">
+            <strong>Call / WhatsApp</strong>
+            <a
+              class="call-number"
+              href="tel:+27737078085"
+              aria-label="Call 073 707 8085"
+              >073 707 8085</a
+            >
+          </div>
+
+          <div class="contact-item">
+            <strong>Email</strong>
+            <a href="mailto:info@moloiplumbers.co.za"
+              >info@moloiplumbers.co.za</a
+            >
+          </div>
+
+          <div class="contact-item">
+            <strong>Service Area</strong>
+            <p>Alexandra, Johannesburg — Gauteng</p>
+          </div>
+
+          <a class="btn call-now" href="tel:+27737078085" aria-label="Call now"
+            >Call 073 707 8085</a
+          >
+        </div>
+      </div>
+
+      <div class="site-footer-bottom">
+        <div class="container">
+          <p>
+            © 2026 Moloi Plumbers CC. All rights reserved.
+            <span class="footer-legal">Registered & insured</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/hammer-cursor.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/services.js"></script>
+  </body>
+</html>

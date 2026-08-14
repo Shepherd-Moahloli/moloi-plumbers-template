@@ -1,0 +1,221 @@
+.hero-content.pre-slide {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+.hero-content.slide-in-left {
+  animation: slideInFromLeft 640ms cubic-bezier(0.22, 0.9, 0.35, 1) forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content.slide-in-left,
+  .hero-content.pre-slide {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Hover / focus lift for card images (and make them clickable) */
+/* Note: only target .service-thumb so index page images are unchanged */
+.service-card .service-thumb {
+  margin: 0;
+  padding: 16px; /* keep the visual padding around the thumbnail */
+  background-color: #fff; /* visible padding area */
+  border-radius: 30px;
+  overflow: hidden; /* ensure rounded corners clip the image */
+  height: 320px; /* thumbnail height */
+  box-sizing: border-box;
+}
+
+.service-card .service-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* maintain aspect and crop nicely */
+  border-radius: 0; /* handled on the figure */
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 280ms ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* Lift effect only for thumbnails on services page */
+.service-card .service-thumb:hover img,
+.service-card .service-thumb:focus-within img,
+.service-card .service-thumb img:focus {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 34px rgba(4, 30, 18, 0.08);
+  outline: none;
+}
+
+/* apply same cursor and subtle effect to the quick-quote / wc images if desired */
+
+.wc-image img {
+  cursor: pointer;
+  width: 100%;
+  height: 260px; /* larger height for these thumbnails too */
+  object-fit: cover;
+
+  box-sizing: border-box;
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 280ms ease;
+}
+
+.qq-image:hover img,
+.wc-image:hover img,
+.qq-image:focus-within img,
+.wc-image:focus-within img {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 26px rgba(4, 30, 18, 0.06);
+}
+
+/* respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-card img,
+  .qq-image img,
+  .wc-image img {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Hero video background + left→right slide animation */
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #000;
+  display: block;
+}
+
+/* Each video is full-bleed, absolutely positioned and animated */
+.video-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-100%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: slideLR;
+  animation-duration: 20s; /* total loop */
+  animation-timing-function: cubic-bezier(0.22, 0.9, 0.29, 1);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  pointer-events: none;
+}
+
+/* Stagger so slides come one after the other */
+.video-slide:nth-of-type(1) {
+  animation-delay: 0s;
+}
+.video-slide:nth-of-type(2) {
+  animation-delay: 5s;
+}
+.video-slide:nth-of-type(3) {
+  animation-delay: 10s;
+}
+.video-slide:nth-of-type(4) {
+  animation-delay: 15s;
+}
+
+/* Keep the content above the videos and overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero .hero-content,
+.hero .hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+/* Keyframes: enter from left, hold center, exit to right */
+@keyframes slideLR {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  6% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  36% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .video-slide {
+    animation: none;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .hero::after {
+    background: rgba(0, 0, 0, 0.45);
+  }
+}
+
+.hero,
+.hero-services {
+  /* match home page height */
+  min-height: 90vh;
+  height: 90vh;
+}
+
+/* ensure the background container and the video fill the full hero area */
+.hero-bg,
+.hero-bg video,
+.hero .hero-video,
+.hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* vertically center hero content (keeps overlay and absolute bg working) */
+.hero {
+  display: flex;
+  align-items: center;
+}
