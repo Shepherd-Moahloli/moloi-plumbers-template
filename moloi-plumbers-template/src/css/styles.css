@@ -68,7 +68,6 @@ body {
 .site-header .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 12px 18px;
 }
 .header-inner {
   display: grid;
@@ -676,8 +675,8 @@ header,
    This overrides the general .btn.primary appearance for these specific locations. */
 .site-header .btn.primary,
 .hero-ctas a.btn.primary:first-child {
-  background: transparent !important;
-  color: var(--white) !important;
+  background: #fff !important;
+  color: #000 !important;
   border: 2px solid rgba(255, 255, 255, 0.95) !important;
   box-shadow: none !important;
   padding: 10px 14px !important;
@@ -1540,25 +1539,82 @@ a.btn.call-now:focus {
 }
 
 .hero-services .hero-content .hero-copy h1 {
-  margin: 0 0 8px;
-  font-size: clamp(28px, 4.8vw, 44px);
-  line-height: 1.05;
+  font-size: 3.5rem;
+  margin: 0 0 12px;
+  line-height: 1.2;
   color: var(--text);
 }
 
 .hero-services .hero-content .lead {
-  max-width: 880px;
-  margin: 8px auto 0;
-  color: rgba(11, 42, 26, 0.85);
-  font-size: 1.05rem;
+  font-size: 1.8rem;
+  margin: 0 0 18px;
+  line-height: 1.5;
 }
 
-/* Respect reduced-motion */
+/* Video rotator: left→right slide + crossfade (3s) */
+.hero-services[data-rotator="video"] .hero-bg {
+  overflow: hidden;
+  position: absolute; /* ensure correct stacking */
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-services[data-rotator="video"] .bg-layer {
+  /* stop image animation for video rotator */
+  animation: none !important;
+
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: translateX(100%); /* start off-canvas to the right by default */
+  transition:
+    transform 3000ms cubic-bezier(0.22, 0.9, 0.22, 1),
+    opacity 600ms ease;
+  will-change: transform, opacity;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* when a layer is activated we bring it to view from the left */
+.hero-services[data-rotator="video"] .bg-layer.enter-left {
+  transform: translateX(-100%); /* prepare to slide in from left */
+  opacity: 0;
+}
+
+/* after small tick we set active to animate it to 0 */
+.hero-services[data-rotator="video"] .bg-layer.active {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* outgoing slides move right and fade */
+.hero-services[data-rotator="video"] .bg-layer.leaving {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+/* ensure videos fill the area */
+.hero-services[data-rotator="video"] .bg-layer video,
+.hero-services[data-rotator="video"] .bg-layer {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
-  .hero-services .bg-layer,
-  .hero-services .bg-layer {
-    animation: none !important;
-    opacity: 1;
-    transform: none;
+  .hero-services[data-rotator="video"] .bg-layer,
+  .hero-services[data-rotator="video"] .bg-layer.active,
+  .hero-services[data-rotator="video"] .bg-layer.leaving {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }
