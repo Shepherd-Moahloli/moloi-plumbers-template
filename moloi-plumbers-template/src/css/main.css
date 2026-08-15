@@ -273,7 +273,7 @@
 .btn.quote {
   background: #fff;
   color: #0a4b32; /* dark green text */
-  border: none;
+  border: 2px solid #0a4b32;
 }
 
 /* transparent WhatsApp button with white border */
@@ -412,4 +412,403 @@ nav a.active:hover {
   transition:
     background-color 180ms ease,
     transform 180ms ease;
+}
+
+/* About page : layout and typography */
+.about-copy {
+  padding: 56px 0;
+  color: #153826;
+}
+
+.about-copy .section-header {
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto 28px;
+}
+
+.about-copy #about-heading {
+  font-size: 2.75rem;
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #0f3f2b;
+}
+
+.about-copy .lead {
+  margin: 0 auto 22px;
+  max-width: 920px;
+  font-size: 1.05rem;
+  color: rgba(21, 56, 38, 0.9);
+  line-height: 1.6;
+}
+
+/* make the section header lead paragraph justified (overrides centered parent) */
+.about-copy .section-header .lead {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  margin: 0 auto 22px;
+  max-width: 845px;
+}
+
+/* keep the last line left-aligned on wide screens for readability */
+@media (min-width: 900px) {
+  .about-copy .section-header .lead {
+    text-align-last: center;
+  }
+}
+
+/* two-column grid for content */
+.grid.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* content blocks */
+.grid.two-col > div {
+  background: transparent;
+  padding: 6px 0;
+}
+
+.about-copy h2 {
+  font-size: 1.125rem;
+  margin: 0 0 10px;
+  color: #0b2f24;
+  font-weight: 700;
+}
+
+.about-copy p {
+  margin: 0 0 14px;
+  color: rgba(21, 56, 38, 0.92);
+  line-height: 1.7;
+}
+
+/* list styling */
+.about-copy ul {
+  margin: 0 0 16px 1.1rem;
+  padding: 0;
+  color: rgba(21, 56, 38, 0.9);
+}
+
+.about-copy li {
+  margin: 6px 0;
+}
+
+/* emphasize strong text */
+.about-copy strong {
+  color: #0b2f24;
+}
+
+/* call-to-action button */
+.about-copy .btn.primary {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 16px;
+}
+
+/* About page media */
+.about-media {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.team-photo {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(4, 30, 18, 0.08);
+  background: #fff;
+}
+
+.team-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 280ms ease;
+}
+
+.team-photo img:hover,
+.team-photo img:focus {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 48px rgba(4, 30, 18, 0.1);
+  outline: none;
+}
+
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.about-gallery figure {
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(4, 30, 18, 0.06);
+}
+
+.about-gallery img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.about-gallery img:hover,
+.about-gallery img:focus {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* gallery captions */
+.about-media figcaption {
+  font-size: 0.9rem;
+  color: rgba(11, 47, 36, 0.9);
+  padding: 8px 10px;
+  text-align: center;
+}
+
+/* responsive : stack and tighten spacing */
+@media (max-width: 900px) {
+  .about-copy {
+    padding: 32px 16px;
+  }
+
+  .grid.two-col {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-copy #about-heading {
+    font-size: 1.75rem;
+  }
+
+  .about-copy .lead {
+    font-size: 1rem;
+  }
+
+  .about-media {
+    align-items: stretch;
+  }
+
+  .about-gallery img {
+    height: 140px;
+  }
+}
+
+/* About page hero (image + copy) */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.about-hero .hero-media {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 28px 64px rgba(4, 30, 18, 0.08);
+  background: #fff;
+}
+
+.about-hero .hero-photo img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition:
+    transform 300ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 300ms ease;
+}
+
+.about-hero .hero-photo img:hover,
+.about-hero .hero-photo img:focus {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 30px 70px rgba(4, 30, 18, 0.1);
+  outline: none;
+}
+
+.about-hero .hero-copy h1 {
+  font-size: 2.75rem;
+  margin: 0 0 12px;
+  color: #0f3f2b;
+  line-height: 1.02;
+}
+
+.about-hero .hero-copy .lead {
+  font-size: 1.05rem;
+  color: rgba(21, 56, 38, 0.9);
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+
+/* buttons spacing */
+.about-hero .hero-actions {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+/* reuse existing .btn.quote and .btn.whatsapp styling but ensure sizes */
+.btn.quote,
+.btn.whatsapp {
+  padding: 14px 22px;
+  font-size: 1rem;
+  border-radius: 999px;
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 28px 16px;
+  }
+  .about-hero .hero-photo img {
+    height: 260px;
+  }
+  .about-hero .hero-copy h1 {
+    font-size: 1.9rem;
+    text-align: center;
+  }
+  .about-hero .hero-copy .lead {
+    text-align: center;
+  }
+  .about-hero .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* Contact block on About page: image beside Get in Touch text (improved layout + CTA) */
+.contact-block {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 18px;
+  /* keep children from forcing overflow in narrow columns */
+  min-width: 0;
+}
+
+.contact-media {
+  flex: 0 0 220px;
+  width: 400px;
+  height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(4, 30, 18, 0.08);
+  background: #fff;
+  margin-top: 100px;
+}
+
+.contact-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.contact-media img:hover,
+.contact-media img:focus {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 22px 48px rgba(4, 30, 18, 0.1);
+  outline: none;
+}
+
+.contact-info {
+  flex: 1 1 auto;
+  min-width: 0; /* allow text to wrap correctly inside flex */
+  margin-top: 120px;
+}
+
+/* contact: phone pill + stacked buttons under the copy */
+.contact-info .contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* phone as pill, no underline */
+.contact-info a[href^="tel:"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid #0f3f2b; /* outline color */
+  color: #0f3f2b;
+  font-weight: 700;
+  text-decoration: none;
+  background: transparent;
+  box-shadow: 0 12px 28px rgba(15, 63, 43, 0.06);
+}
+
+/* buttons row forced below the phone/text */
+.contact-info .contact-actions {
+  flex-basis: 100%;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* primary button appearance */
+.contact-info .btn.primary {
+  background: #0f3f2b;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 20px 48px rgba(4, 30, 18, 0.08);
+}
+
+/* secondary (whatsapp) - outline style */
+.contact-info .btn.whatsapp {
+  background: transparent;
+  color: #0f3f2b;
+  padding: 10px 18px;
+  border-radius: 999px;
+}
+
+/* make about/vision copy align both left and right (justified) */
+.about-copy .lead,
+.about-copy p,
+.grid.two-col > div p,
+.contact-info p {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+/* keep the last line left-aligned for readability on wide screens */
+@media (min-width: 900px) {
+  .about-copy .lead,
+  .about-copy p,
+  .contact-info p {
+    text-align-last: left;
+  }
 }

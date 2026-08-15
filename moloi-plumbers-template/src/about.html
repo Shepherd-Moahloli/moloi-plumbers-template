@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Services — Moloi Plumbers</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="logo" href="index.html" aria-label="Moloi Plumbers CC home">
+          <img
+            src="images/logo.png"
+            alt="Moloi Plumbers CC Logo"
+            width="80"
+            height="80"
+            onerror="
+              this.onerror = null;
+              this.src = 'https://picsum.photos/seed/plumber/80';
+            "
+          />
+        </a>
+
+        <nav id="main-nav" class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html" aria-current="page">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a class="phone" href="tel:+27114431949">+27 11 443 1949</a>
+          <a class="btn primary" href="contact.html">Get a Quote</a>
+
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="main-nav"
+            aria-label="Toggle navigation"
+            type="button"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero: animated large service background -->
+    <section class="hero hero-services" aria-hidden="false">
+      <div class="hero-bg">
+        <!-- Video slides: update src paths to your video files -->
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="images/hero-poster.jpg"
+        >
+          <source
+            src="assets/videos/maintenance-services-motion.mp4"
+            type="video/mp4"
+          />
+          <!-- If the files are in project root/videos use "/videos/..." ; if next to the HTML use "videos/..." or "./videos/..." ; if in ../assets use "../assets/videos/..." -->
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="hero-content container">
+        <div class="hero-copy hero-copy-left">
+          <h1>About Moloi Plumbers</h1>
+          <p class="lead">
+            Reliable, professional plumbing services focused on fast response,
+            clear pricing and long-lasting workmanship.
+          </p>
+          <div class="hero-actions">
+            <a class="btn quote" href="contact.html">Get a Fast Quote</a>
+            <a
+              class="btn whatsapp"
+              href="https://wa.me/27114431949?text=Hello%20Moloi%20Plumbers%2C%20I%20need%20a%20fast%20quote"
+              target="_blank"
+              rel="noopener"
+              >WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="about-hero container" aria-hidden="false">
+        <div class="hero-media">
+          <figure class="hero-photo">
+            <img
+              src="images/exec-7c577e38-054c-4761-90ea-c11403bea964.png"
+              alt="Plumbers working on site"
+              loading="lazy"
+              onerror="
+                this.onerror = null;
+                this.src = 'https://picsum.photos/seed/teamhero/1000/700';
+              "
+            />
+          </figure>
+        </div>
+
+        <div class="hero-copy">
+          <h1>Plumbers on the Job — Fast, Reliable</h1>
+          <p class="lead">
+            Our team is ready to handle emergencies, installations and
+            maintenance. Get a fast, no‑obligation quote and we’ll be with you
+            shortly.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn quote" href="contact.html">Get a Fast Quote</a>
+            <a
+              class="btn whatsapp"
+              href="https://wa.me/27114431949"
+              target="_blank"
+              rel="noopener"
+              >WhatsApp Us</a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- copy/paste your services section from index.html or use the static markup below -->
+      <section class="about-copy container" aria-labelledby="about-heading">
+        <header class="section-header">
+          <h1 id="about-heading">About Moloi Plumbers</h1>
+          <p class="lead">
+            Reliable, professional plumbing services focused on fast response,
+            clear pricing and long-lasting workmanship. We handle emergencies,
+            routine maintenance and full installations with the same attention
+            to detail.
+          </p>
+        </header>
+
+        <div class="grid two-col">
+          <div>
+            <h2 style="font-size: 2.75rem">Mission</h2>
+            <p>
+              To provide dependable plumbing services that protect homes and
+              businesses, delivered by experienced technicians using modern
+              tools and proven techniques.
+            </p>
+
+            <!-- Image moved to the Mission column -->
+            <figure class="contact-media" aria-hidden="true">
+              <img
+                src="images/contact-tech.jpg"
+                alt="Technician ready to help"
+                loading="lazy"
+                onerror="
+                  this.onerror = null;
+                  this.src = 'https://picsum.photos/seed/contact/420/420';
+                "
+                width="420"
+                height="420"
+              />
+            </figure>
+          </div>
+
+          <div>
+            <h2 style="font-size: 2.75rem">Vision</h2>
+            <p>
+              We serve residential and commercial clients across the area and
+              offer fast response for urgent situations. For non-urgent work we
+              provide clear timelines and helpful advice so you can plan with
+              confidence.
+            </p>
+
+            <!-- Contact copy moved to the Vision column -->
+            <div class="contact-info">
+              <h2 style="font-size: 2rem">Get in Touch</h2>
+              <p>
+                For estimates, same‑day emergency assistance, or general
+                enquiries,call us or send a message. We’ll respond promptly and
+                provide clear pricing and timelines for your plumbing needs.
+              </p>
+
+              <div class="contact-row">
+                <div class="contact-actions">
+                  <a class="btn primary" href="contact.html">Request a Quote</a>
+                  <a href="tel:+27114431949">+27 11 443 1949</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p><a href="index.html">← Back to home</a></p>
+        <p>© 2026 Moloi Plumbers CC</p>
+      </div>
+    </footer>
+
+    <script src="js/hammer-cursor.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/services.js" defer></script>
+    <script src="js/hero-videos.js" defer></script>
+  </body>
+</html>
