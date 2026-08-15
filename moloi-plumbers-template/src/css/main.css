@@ -735,7 +735,7 @@ nav a.active:hover {
 .contact-info {
   flex: 1 1 auto;
   min-width: 0; /* allow text to wrap correctly inside flex */
-  margin-top: 120px;
+  margin-top: 100px;
 }
 
 /* contact: phone pill + stacked buttons under the copy */
