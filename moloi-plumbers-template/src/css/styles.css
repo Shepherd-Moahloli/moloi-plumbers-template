@@ -814,6 +814,7 @@ a.btn:focus {
   border-radius: 2rem;
   box-shadow: 0 8px 22px rgba(11, 42, 26, 0.08);
   font-weight: 800;
+  border: none;
 }
 
 /* subtle responsive adjustments */
