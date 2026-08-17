@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Services — Moloi Plumbers</title>
+    <title>Contact — Moloi Plumbers</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/main.css" />
   </head>
@@ -26,9 +26,9 @@
         <nav id="main-nav" class="main-nav" aria-label="Primary">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html" aria-current="page">Services</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
           </ul>
         </nav>
 
@@ -51,7 +51,7 @@
     </header>
 
     <!-- Hero: animated large service background -->
-    <section class="hero hero-services" aria-hidden="false">
+    <section class="hero hero-contact" aria-hidden="false">
       <div class="hero-bg">
         <!-- Video slides: update src paths to your video files -->
         <video
@@ -74,7 +74,7 @@
 
       <div class="hero-content container">
         <div class="hero-copy hero-copy-left">
-          <h1>Our Plumbing Services</h1>
+          <h1>Contact Moloi Plumbers</h1>
           <p class="lead">
             Need help now or want a quote? Call us, message on WhatsApp or send
             a quick note below and we’ll reply promptly.
