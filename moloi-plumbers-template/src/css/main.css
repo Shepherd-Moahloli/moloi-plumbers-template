@@ -1106,3 +1106,7 @@ nav a.active:hover {
   font-weight: 800;
   color: var(--brand);
 }
+
+.footer-right .contact-icon img {
+  filter: brightness(0) invert(1);
+}
