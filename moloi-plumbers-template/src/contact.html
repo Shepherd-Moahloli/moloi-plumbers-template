@@ -103,10 +103,29 @@
             <form
               class="contact-form"
               id="contact-form"
-              action="#"
-              method="post"
+              name="contact"
+              action="/"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
               novalidate
             >
+              <input type="hidden" name="form-name" value="contact" />
+
+              <input
+                type="hidden"
+                name="subject"
+                value="New Moloi Plumbers website enquiry"
+                data-remove-prefix
+              />
+
+              <p class="bot-field" aria-hidden="true">
+                <label>
+                  Do not complete this field:
+                  <input name="bot-field" tabindex="-1" autocomplete="off" />
+                </label>
+              </p>
+
               <div class="form-row">
                 <label class="sr-only" for="name">Your name</label>
                 <input
@@ -237,6 +256,14 @@
               <div class="form-row">
                 <button class="btn primary" type="submit">Send Message</button>
               </div>
+              <p
+  class="form-submit-error"
+  id="form-submit-error"
+  role="alert"
+  hidden
+>
+  We could not send your message. Please try again or contact us directly.
+</p>
             </form>
 
             <div
