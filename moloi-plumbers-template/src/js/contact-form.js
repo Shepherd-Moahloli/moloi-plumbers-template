@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     formData.set("phone", `+27${formData.get("phone")}`);
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch("/contact.html", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
