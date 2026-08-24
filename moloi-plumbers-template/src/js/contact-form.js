@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
   const success = document.getElementById("form-success");
-
+  const submitError = document.getElementById("form-submit-error");
   if (!form || !success) return;
 
   const fields = Array.from(form.elements).filter((field) => field.name);
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const results = fields.map((field) => validate(field));
@@ -121,10 +121,41 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    form.reset();
-    form.hidden = true;
-    success.hidden = false;
-    success.focus();
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+
+    submitError.hidden = true;
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    const formData = new FormData(form);
+
+    /* Combine the permanent +27 with the customer's nine digits */
+    formData.set("phone", `+27${formData.get("phone")}`);
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to submit form");
+      }
+
+      form.reset();
+      form.hidden = true;
+      success.hidden = false;
+      success.focus();
+    } catch (error) {
+      submitError.hidden = false;
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
   });
 
   clearFormState();
