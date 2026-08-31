@@ -8,14 +8,13 @@ body {
     pointer;
 }
 :root {
-  --brand: #0b4d2e;
-  --brand-dark: #073a23;
-  --accent: #ffd166;
-  --text: #0b2a1a;
+  --brand: #0a78d9;
+  --brand-dark: #0056b8;
+  --accent: #0d8bff;
+  --text: #1f2937;
   --white: #ffffff;
-  --success: #25d366; /* new: shared green for CTAs (WhatsApp green) */
+  --success: #0a78d9;
 }
-
 /* Fix: global box-sizing + full-height + prevent horizontal scroll */
 html {
   box-sizing: border-box;
@@ -39,13 +38,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 100; /* sit above hero and other UI */
-  background: linear-gradient(
-    180deg,
-    rgba(11, 77, 46, 0.98),
-    rgba(11, 77, 46, 0.88)
-  );
+  background-color: #f4f4f4;
+  color: #0a78d9;
   padding: 8px 0; /* consistent top/bottom spacing */
-  backdrop-filter: saturate(120%) blur(4px);
 }
 
 /* subtle bottom fade — keep under header content so transparent areas show the hero */
@@ -58,12 +53,6 @@ body {
   height: 56px; /* tweak for stronger/softer fade */
   pointer-events: none;
   z-index: 78; /* under header interactive elements but above page background */
-  background: linear-gradient(
-    180deg,
-    rgba(11, 77, 46, 0) 0%,
-    rgba(11, 77, 46, 0.28) 50%,
-    rgba(11, 77, 46, 0.86) 100%
-  );
 }
 .site-header .container {
   max-width: 1100px;
@@ -105,20 +94,27 @@ body {
   padding: 0;
 }
 .main-nav a {
-  color: var(--white);
+  color: var(--brand);
   text-decoration: none;
-  font-weight: 600;
-  padding: 8px 6px;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 999px;
   transition:
     color 0.15s ease,
-    opacity 0.15s ease;
+    background-color 0.15s ease,
+    transform 0.15s ease;
 }
 .main-nav a:hover,
 .main-nav a:focus {
-  color: #d6f8e5;
-  opacity: 0.95;
+  color: var(--brand-dark);
+  background: rgba(10, 120, 217, 0.08);
 }
 
+.main-nav a[aria-current="page"] {
+  background: var(--brand);
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(10, 120, 217, 0.18);
+}
 /* Header actions (phone + CTA) */
 .header-actions {
   grid-column: 3;
@@ -129,10 +125,10 @@ body {
   justify-self: end;
 }
 .header-actions .phone {
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 149, 255, 0.05);
   padding: 8px 10px;
   border-radius: 6px;
 }
@@ -144,7 +140,7 @@ body {
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
-  box-shadow: 0 6px 18px rgba(11, 77, 46, 0.08);
+  box-shadow: 0 6px 18px rgba(10, 120, 217, 0.08);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease,
@@ -401,9 +397,9 @@ nav a:hover {
   padding: 0;
   /* green-tinted shadow (replaces the previous darker/black tint) */
   box-shadow:
-    0 18px 46px rgba(11, 77, 46, 0.08),
-    0 6px 18px rgba(11, 77, 46, 0.05);
-  border: 1px solid rgba(11, 42, 26, 0.03);
+    0 18px 46px rgba(10, 120, 217, 0.08),
+    0 6px 18px rgba(10, 120, 217, 0.05);
+  border: 1px solid rgba(10, 120, 217, 0.03);
   background: #fff;
   min-height: 0;
   display: block;
@@ -416,8 +412,8 @@ nav a:hover {
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow:
-    0 30px 70px rgba(11, 77, 46, 0.12),
-    0 12px 30px rgba(11, 77, 46, 0.06);
+    0 30px 70px rgba(10, 120, 217, 0.12),
+    0 12px 30px rgba(10, 120, 217, 0.06);
 }
 
 /* thumbnail — fixed-height image, top rounded corners */
@@ -601,7 +597,7 @@ header,
   border-radius: 2rem;
   text-decoration: none;
   font-weight: 700;
-  box-shadow: 0 8px 22px rgba(11, 77, 46, 0.12);
+  box-shadow: 0 8px 22px rgba(10, 120, 217, 0.12);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease,
@@ -617,7 +613,7 @@ header,
   border-radius: 2rem;
   text-decoration: none;
   font-weight: 700;
-  box-shadow: 0 8px 22px rgba(11, 77, 46, 0.12);
+  box-shadow: 0 8px 22px rgba(10, 120, 217, 0.12);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease,
@@ -644,7 +640,7 @@ header,
 .btn.outline-success:focus {
   background: var(--brand);
   color: var(--white);
-  box-shadow: 0 10px 28px rgba(11, 77, 46, 0.14);
+  box-shadow: 0 10px 28px rgba(10, 120, 217, 0.14);
   transform: translateY(-2px);
 }
 
@@ -667,7 +663,7 @@ header,
 .btn.outline-white:focus {
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);
-  box-shadow: 0 10px 28px rgba(11, 77, 46, 0.06);
+  box-shadow: 0 10px 28px rgba(10, 120, 217, 0.06);
   transform: translateY(-2px);
 }
 
@@ -693,7 +689,7 @@ header,
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(11, 77, 46, 0.06);
+  box-shadow: 0 10px 28px rgba(10, 120, 217, 0.06);
 }
 
 /* Remove underline on button-style links (cover all states) */
@@ -708,9 +704,9 @@ a.btn:focus {
 
 /* Keep keyboard focus visible for accessibility */
 a.btn:focus {
-  outline: 3px solid rgba(0, 80, 40, 0.12);
+  outline: 3px solid rgba(10, 120, 217, 0.18);
+  box-shadow: 0 0 0 3px rgba(10, 120, 217, 0.08);
   outline-offset: 4px;
-  box-shadow: 0 0 0 3px rgba(0, 80, 40, 0.06);
 }
 
 /* Flowing animation bar (decorative) */
@@ -775,7 +771,7 @@ a.btn:focus {
   height: auto;
   display: block;
   border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(11, 77, 46, 0.08);
+  box-shadow: 0 18px 40px rgba(10, 120, 217, 0.08);
   object-fit: cover;
   margin: 0;
 }
@@ -812,7 +808,7 @@ a.btn:focus {
 .btn.whatsapp {
   padding: 12px 18px;
   border-radius: 2rem;
-  box-shadow: 0 8px 22px rgba(11, 42, 26, 0.08);
+  box-shadow: 0 8px 22px rgba(10, 120, 217, 0.08);
   font-weight: 800;
   border: none;
 }
@@ -868,7 +864,7 @@ a.btn:focus {
 
 /* Footer styles */
 .site-footer {
-  background: linear-gradient(180deg, #07392b 0%, #114b36 100%);
+  background: linear-gradient(180deg, #0056b8 0%, #0a78d9 100%);
   color: rgba(255, 255, 255, 0.95);
   padding: 48px 0 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
@@ -897,7 +893,7 @@ a.btn:focus {
 }
 .site-footer a:hover,
 .site-footer a:focus {
-  color: #d6f8e5;
+  color: #dceeff;
   text-decoration: underline;
 }
 .site-footer small,
@@ -913,8 +909,8 @@ footer,
   width: 100%;
   background: linear-gradient(
     180deg,
-    rgba(11, 77, 46, 0.98),
-    rgba(11, 77, 46, 0.88)
+    rgba(0, 86, 184, 0.98),
+    rgba(10, 120, 217, 0.92)
   );
   color: var(--white);
   padding: 40px 0;
@@ -964,7 +960,7 @@ footer .container,
 }
 .footer-nav a:hover,
 .footer-nav a:focus {
-  color: #d6f8e5;
+  color: #dceeff;
   text-decoration: underline;
 }
 
@@ -984,7 +980,7 @@ footer .container,
 }
 .footer-contact a:hover {
   text-decoration: underline;
-  color: #d6f8e5;
+  color: #dceeff;
 }
 
 /* right: social icons */
@@ -1145,7 +1141,7 @@ footer .container,
   background: var(--brand);
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(11, 77, 46, 0.12);
+  box-shadow: 0 12px 30px rgba(10, 120, 217, 0.12);
   text-decoration: none;
 }
 
@@ -1155,7 +1151,7 @@ footer .container,
   height: auto;
   display: block;
   border-radius: 30px;
-  box-shadow: 0 20px 50px rgba(11, 77, 46, 0.08);
+  box-shadow: 0 20px 50px rgba(10, 120, 217, 0.08);
   object-fit: cover;
 }
 
@@ -1223,7 +1219,7 @@ a.btn.call-now {
   font-weight: 800;
   text-decoration: none;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 28px rgba(11, 77, 46, 0.06);
+  box-shadow: 0 8px 28px rgba(10, 120, 217, 0.06);
   margin-top: 12px; /* separate from the block above */
   transition:
     transform 140ms ease,
@@ -1235,7 +1231,7 @@ a.btn.call-now:hover,
 a.btn.call-now:focus {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 14px 36px rgba(11, 77, 46, 0.1);
+  box-shadow: 0 14px 36px rgba(10, 120, 217, 0.1);
   outline: none;
 }
 
@@ -1271,8 +1267,8 @@ a.btn.call-now:focus {
   height: 420px; /* slightly reduced height */
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(11, 77, 46, 0.06);
-  border: 1px solid rgba(11, 42, 26, 0.06);
+  box-shadow: 0 20px 50px rgba(10, 120, 217, 0.06);
+  border: 1px solid rgba(10, 120, 217, 0.06);
 }
 .service-map {
   width: 100%;
@@ -1310,7 +1306,7 @@ a.btn.call-now:focus {
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
-  color: var(--text-dark, #0b3b2b);
+  color: var(--text-dark, #1f2937);
 
   /* new: make items interactive */
   cursor: pointer;
@@ -1326,15 +1322,15 @@ a.btn.call-now:focus {
 .areas-list li:focus,
 .areas-list li:focus-visible {
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 22px 46px rgba(11, 77, 46, 0.1);
-  background-color: rgba(11, 77, 46, 0.02); /* subtle tint on hover */
+  box-shadow: 0 22px 46px rgba(10, 120, 217, 0.1);
+  background-color: rgba(10, 120, 217, 0.02); /* subtle tint on hover */
   outline: none;
 }
 
 /* visible focus ring for keyboard users (applies when element can receive focus) */
 .areas-list li:focus-visible {
-  box-shadow: 0 22px 46px rgba(11, 77, 46, 0.12);
-  outline: 3px solid rgba(11, 77, 46, 0.12);
+  box-shadow: 0 22px 46px rgba(10, 120, 217, 0.12);
+  outline: 3px solid rgba(10, 120, 217, 0.12);
   outline-offset: 4px;
 }
 

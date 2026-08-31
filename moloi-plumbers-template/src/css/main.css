@@ -272,13 +272,13 @@
 /* white filled primary quote button */
 .btn.quote {
   background: #fff;
-  color: #0a4b32; /* dark green text */
-  border: 2px solid #0a4b32;
+  color: var(--brand); /* dark green text */
+  border: 2px solid var(--brand);
 }
 
 /* transparent WhatsApp button with white border */
 .btn.whatsapp {
-  background: #0a4b32;
+  background: var(--brand);
   color: #fff;
   border: 2px solid #fff;
 }
@@ -342,8 +342,8 @@ nav a.active,
   justify-content: center;
   padding: 8px 14px;
   border-radius: 999px;
-  border: 2px solid rgba(255, 255, 255, 0.95);
-  color: #fff !important;
+  border: 2px solid rgba(41, 137, 221, 0.95);
+  color: var(--brand) !important;
   background: transparent;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   transition:
@@ -430,7 +430,7 @@ nav a.active:hover {
   font-size: 2.75rem;
   margin: 0 0 10px;
   font-weight: 700;
-  color: #0f3f2b;
+  color: var(--brand);
 }
 
 .about-copy .lead {
@@ -474,8 +474,8 @@ nav a.active:hover {
   /* subtle pale green fade */
   background: linear-gradient(
     180deg,
-    rgba(230, 249, 241, 0.65) 0%,
-    rgba(245, 253, 250, 0.85) 60%,
+    rgba(196, 235, 255, 0.65) 0%,
+    rgba(206, 239, 255, 0.85) 60%,
     rgba(255, 255, 255, 0.95) 100%
   );
 
@@ -493,7 +493,7 @@ nav a.active:hover {
 .about-copy h2 {
   font-size: 1.125rem;
   margin: 0 0 10px;
-  color: #0b2f24;
+  color: var(--brand);
   font-weight: 700;
 }
 
@@ -662,7 +662,7 @@ nav a.active:hover {
 .about-hero .hero-copy h1 {
   font-size: 2.75rem;
   margin: 0 0 12px;
-  color: #0f3f2b;
+  color: var(--brand);
   line-height: 1.02;
 }
 
@@ -770,8 +770,8 @@ nav a.active:hover {
   justify-content: center;
   padding: 10px 18px;
   border-radius: 999px;
-  border: 2px solid #0f3f2b; /* outline color */
-  color: #0f3f2b;
+  border: 2px solid var(--brand); /* outline color */
+  color: var(--brand);
   font-weight: 700;
   text-decoration: none;
   background: transparent;
@@ -789,7 +789,7 @@ nav a.active:hover {
 
 /* primary button appearance */
 .contact-info .btn.primary {
-  background: #0f3f2b;
+  background: var(--brand);
   color: #ffffff;
   padding: 12px 22px;
   border-radius: 999px;
