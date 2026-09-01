@@ -18,7 +18,7 @@ function setupEventListeners() {
   const contactButton = document.getElementById("contact-button");
   if (contactButton) {
     contactButton.addEventListener("click", () => {
-      alert("Contact us at info@moloi-plumbers.co.za");
+      alert("Contact us at info@allsetprojects.co.za");
     });
   }
 }
