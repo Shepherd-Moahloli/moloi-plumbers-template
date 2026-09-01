@@ -1,0 +1,1263 @@
+.hero-content.pre-slide {
+  opacity: 0;
+  transform: translateX(-36px);
+}
+
+.hero-content.slide-in-left {
+  animation: slideInFromLeft 640ms cubic-bezier(0.22, 0.9, 0.35, 1) forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-content.slide-in-left,
+  .hero-content.pre-slide {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Hover / focus lift for card images (and make them clickable) */
+/* Note: only target .service-thumb so index page images are unchanged */
+.service-card .service-thumb {
+  margin: 0;
+  padding: 16px; /* keep the visual padding around the thumbnail */
+  background-color: #fff; /* visible padding area */
+  border-radius: 30px;
+  overflow: hidden; /* ensure rounded corners clip the image */
+  height: 320px; /* thumbnail height */
+  box-sizing: border-box;
+}
+
+.service-card .service-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* maintain aspect and crop nicely */
+  border-radius: 0; /* handled on the figure */
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 280ms ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+/* Lift effect only for thumbnails on services page */
+.service-card .service-thumb:hover img,
+.service-card .service-thumb:focus-within img,
+.service-card .service-thumb img:focus {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 34px rgba(4, 30, 18, 0.08);
+  outline: none;
+}
+
+/* apply same cursor and subtle effect to the quick-quote / wc images if desired */
+
+.wc-image img {
+  cursor: pointer;
+  width: 100%;
+  height: 260px; /* larger height for these thumbnails too */
+  object-fit: cover;
+
+  box-sizing: border-box;
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 280ms ease;
+}
+
+.qq-image:hover img,
+.wc-image:hover img,
+.qq-image:focus-within img,
+.wc-image:focus-within img {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 10px 26px rgba(4, 30, 18, 0.06);
+}
+
+/* respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-card img,
+  .qq-image img,
+  .wc-image img {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Hero video background + left→right slide animation */
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #000;
+  display: block;
+}
+
+/* Each video is full-bleed, absolutely positioned and animated */
+.video-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-100%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: slideLR;
+  animation-duration: 20s; /* total loop */
+  animation-timing-function: cubic-bezier(0.22, 0.9, 0.29, 1);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  pointer-events: none;
+}
+
+/* Stagger so slides come one after the other */
+.video-slide:nth-of-type(1) {
+  animation-delay: 0s;
+}
+.video-slide:nth-of-type(2) {
+  animation-delay: 5s;
+}
+.video-slide:nth-of-type(3) {
+  animation-delay: 10s;
+}
+.video-slide:nth-of-type(4) {
+  animation-delay: 15s;
+}
+
+/* Keep the content above the videos and overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero .hero-content,
+.hero .hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+/* Keyframes: enter from left, hold center, exit to right */
+@keyframes slideLR {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  6% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  36% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .video-slide {
+    animation: none;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .hero::after {
+    background: rgba(0, 0, 0, 0.45);
+  }
+}
+
+.hero,
+.hero-services {
+  /* match home page height */
+  min-height: 90vh;
+  height: 90vh;
+}
+
+/* ensure the background container and the video fill the full hero area */
+.hero-bg,
+.hero-bg video,
+.hero .hero-video,
+.hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* vertically center hero content (keeps overlay and absolute bg working) */
+.hero {
+  display: flex;
+  align-items: center;
+}
+
+/* Services hero: left align and white text with action buttons */
+.hero-services .hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 360px;
+  padding-left: 2rem;
+  box-sizing: border-box;
+}
+
+.hero-services .hero-copy {
+  color: #fff;
+  text-align: left;
+  max-width: 600px;
+  padding: 1rem 1.5rem;
+  /* optional subtle backdrop so text remains readable on the video */
+  border-radius: 6px;
+  margin-left: 60px;
+}
+
+.hero-services .hero-copy h1 {
+  color: #ffffff;
+  margin: 0 0 0.25rem;
+  line-height: 1.05;
+}
+
+.hero-services .hero-copy .lead {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1rem;
+}
+
+/* action buttons inside hero */
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* white filled primary quote button */
+.btn.quote {
+  background: #fff;
+  color: var(--brand); /* dark green text */
+  border: 2px solid var(--brand);
+}
+
+/* transparent WhatsApp button with white border */
+.btn.whatsapp {
+  background: var(--brand);
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+/* responsive: center on small screens */
+@media (max-width: 768px) {
+  .hero-services .hero-content {
+    justify-content: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .hero-services .hero-copy {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.22);
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* Overrides: force services hero to be left-aligned and white */
+.hero-services .hero-content.container {
+  width: 100%;
+  max-width: none;
+  justify-content: flex-start;
+  padding-left: 4rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+.hero-services .hero-copy,
+.hero-services .hero-copy h1,
+.hero-services .hero-copy .lead {
+  color: #ffffff !important;
+  text-align: left !important;
+}
+
+/* make sure the action buttons stay left of center */
+.hero-services .hero-actions {
+  justify-content: flex-start;
+}
+
+/* tighten spacing on large screens if needed */
+@media (min-width: 1200px) {
+  .hero-services .hero-content.container {
+    padding-left: 6rem;
+  }
+}
+
+/* highlight current header nav item with a white outlined pill (visible on Services page) */
+nav a[aria-current="page"],
+.nav a[aria-current="page"],
+.main-nav a[aria-current="page"],
+nav a.current,
+nav a.active,
+.main-nav a.current,
+.main-nav a.active,
+.site-nav a[aria-current="page"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(41, 137, 221, 0.95);
+  color: var(--brand) !important;
+  background: transparent;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    color 120ms ease;
+}
+
+/* subtle hover for the highlighted item */
+nav a[aria-current="page"]:hover,
+nav a.current:hover,
+nav a.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+
+/* reduce padding on small screens */
+@media (max-width: 768px) {
+  nav a[aria-current="page"],
+  .main-nav a.current {
+    padding: 6px 10px;
+  }
+}
+
+/* Show circular nav and remove underline on hover for header nav
+   (changed: now only on the individual link hover/focus, not header:hover) */
+.main-nav a:hover,
+.main-nav a:focus,
+.nav a:hover,
+.nav a:focus {
+  border: 2px solid #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  display: inline-block;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  color: white;
+}
+
+/* remove underline on hover/focus for nav links (defensive) */
+.main-nav a,
+.nav a {
+  text-decoration: none;
+}
+
+/* make sure hover/focus doesn't re-add underline */
+.main-nav a:hover,
+.main-nav a:focus,
+.nav a:hover,
+.nav a:focus {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* if you want the circular look only when hovering the header area,
+   this keeps the default state unstyled until hover */
+.main-nav a,
+.nav a {
+  background: transparent;
+  border-radius: 999px;
+  padding: 6px 10px;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+/* About page : layout and typography */
+.about-copy {
+  padding: 56px 0;
+  color: #153826;
+}
+
+.about-copy .section-header {
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto 28px;
+}
+
+.about-copy #about-heading {
+  font-size: 2.75rem;
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.about-copy .lead {
+  margin: 0 auto 22px;
+  max-width: 920px;
+  font-size: 1.05rem;
+  color: rgba(21, 56, 38, 0.9);
+  line-height: 1.6;
+}
+
+/* make the section header lead paragraph justified (overrides centered parent) */
+.about-copy .section-header .lead {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  margin: 0 auto 22px;
+  max-width: 845px;
+}
+
+/* keep the last line left-aligned on wide screens for readability */
+@media (min-width: 900px) {
+  .about-copy .section-header .lead {
+    text-align-last: center;
+  }
+}
+
+/* two-column grid for content */
+.grid.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+
+  /* softened container styling */
+  padding: 2rem;
+  margin: 3.5rem auto;
+  border-radius: 18px;
+
+  /* subtle pale green fade */
+  background: linear-gradient(
+    180deg,
+    rgba(196, 235, 255, 0.65) 0%,
+    rgba(206, 239, 255, 0.85) 60%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+
+  /* faint outline + light shadow for separation */
+  border: 1px solid rgba(15, 63, 43, 0.06);
+  box-shadow: 0 8px 22px rgba(4, 30, 18, 0.06);
+}
+
+/* content blocks */
+.grid.two-col > div {
+  background: transparent;
+  padding: 6px 0;
+}
+
+.about-copy h2 {
+  font-size: 1.125rem;
+  margin: 0 0 10px;
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.about-copy p {
+  margin: 0 0 14px;
+  color: rgba(21, 56, 38, 0.92);
+  line-height: 1.7;
+}
+
+/* list styling */
+.about-copy ul {
+  margin: 0 0 16px 1.1rem;
+  padding: 0;
+  color: rgba(21, 56, 38, 0.9);
+}
+
+.about-copy li {
+  margin: 6px 0;
+}
+
+/* emphasize strong text */
+.about-copy strong {
+  color: #0b2f24;
+}
+
+/* call-to-action button */
+.about-copy .btn.primary {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 16px;
+}
+
+/* About page media */
+.about-media {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.team-photo {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(4, 30, 18, 0.08);
+  background: #fff;
+}
+
+.team-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 280ms ease;
+}
+
+.team-photo img:hover,
+.team-photo img:focus {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 48px rgba(4, 30, 18, 0.1);
+  outline: none;
+}
+
+.about-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.about-gallery figure {
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(4, 30, 18, 0.06);
+}
+
+.about-gallery img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.about-gallery img:hover,
+.about-gallery img:focus {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* gallery captions */
+.about-media figcaption {
+  font-size: 0.9rem;
+  color: rgba(11, 47, 36, 0.9);
+  padding: 8px 10px;
+  text-align: center;
+}
+
+/* responsive : stack and tighten spacing */
+@media (max-width: 900px) {
+  .about-copy {
+    padding: 32px 16px;
+  }
+
+  .grid.two-col {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-copy #about-heading {
+    font-size: 1.75rem;
+  }
+
+  .about-copy .lead {
+    font-size: 1rem;
+  }
+
+  .about-media {
+    align-items: stretch;
+  }
+
+  .about-gallery img {
+    height: 140px;
+  }
+}
+
+/* About page hero (image + copy) */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.about-hero .hero-media {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 28px 64px rgba(4, 30, 18, 0.08);
+  background: #fff;
+}
+
+.about-hero .hero-photo img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition:
+    transform 300ms cubic-bezier(0.22, 0.9, 0.35, 1),
+    box-shadow 300ms ease;
+}
+
+.about-hero .hero-photo img:hover,
+.about-hero .hero-photo img:focus {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 30px 70px rgba(4, 30, 18, 0.1);
+  outline: none;
+}
+
+.about-hero .hero-copy h1 {
+  font-size: 2.75rem;
+  margin: 0 0 12px;
+  color: var(--brand);
+  line-height: 1.02;
+}
+
+.about-hero .hero-copy .lead {
+  font-size: 1.05rem;
+  color: rgba(21, 56, 38, 0.9);
+  margin: 0 0 20px;
+  line-height: 1.6;
+}
+
+/* buttons spacing */
+.about-hero .hero-actions {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+/* reuse existing .btn.quote and .btn.whatsapp styling but ensure sizes */
+.btn.quote,
+.btn.whatsapp {
+  padding: 14px 22px;
+  font-size: 1rem;
+  border-radius: 999px;
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 28px 16px;
+  }
+  .about-hero .hero-photo img {
+    height: 260px;
+  }
+  .about-hero .hero-copy h1 {
+    font-size: 1.9rem;
+    text-align: center;
+  }
+  .about-hero .hero-copy .lead {
+    text-align: center;
+  }
+  .about-hero .hero-actions {
+    justify-content: center;
+  }
+}
+
+/* Contact block on About page: image beside Get in Touch text (improved layout + CTA) */
+.contact-block {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 18px;
+  /* keep children from forcing overflow in narrow columns */
+  min-width: 0;
+}
+
+.contact-media {
+  flex: 0 0 220px;
+  width: 400px;
+  height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 14px 36px rgba(4, 30, 18, 0.08);
+  background: #fff;
+  margin-top: 100px;
+}
+
+.contact-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease;
+}
+
+.contact-media img:hover,
+.contact-media img:focus {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 22px 48px rgba(4, 30, 18, 0.1);
+  outline: none;
+}
+
+.contact-info {
+  flex: 1 1 auto;
+  min-width: 0; /* allow text to wrap correctly inside flex */
+  margin-top: 100px;
+}
+
+/* contact: phone pill + stacked buttons under the copy */
+.contact-info .contact-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* phone as pill, no underline */
+.contact-info a[href^="tel:"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--brand); /* outline color */
+  color: var(--brand);
+  font-weight: 700;
+  text-decoration: none;
+  background: transparent;
+  box-shadow: 0 12px 28px rgba(15, 63, 43, 0.06);
+}
+
+/* buttons row forced below the phone/text */
+.contact-info .contact-actions {
+  flex-basis: 100%;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* primary button appearance */
+.contact-info .btn.primary {
+  background: var(--brand);
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 20px 48px rgba(4, 30, 18, 0.08);
+}
+
+/* secondary (whatsapp) - outline style */
+.contact-info .btn.whatsapp {
+  background: transparent;
+  color: #0f3f2b;
+  padding: 10px 18px;
+  border-radius: 999px;
+}
+
+/* make about/vision copy align both left and right (justified) */
+.about-copy .lead,
+.about-copy p,
+.grid.two-col > div p,
+.contact-info p {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+/* keep the last line left-aligned for readability on wide screens */
+@media (min-width: 900px) {
+  .about-copy .lead,
+  .about-copy p,
+  .contact-info p {
+    text-align-last: left;
+  }
+}
+
+/* contact page — form, CTAs and layout */
+.contact-container .grid.two-col > div {
+  box-sizing: border-box;
+}
+.contact-container .grid.two-col {
+  align-items: stretch;
+}
+
+.contact-container .grid.two-col > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Keep the normal stacked positioning on smaller screens */
+@media (max-width: 900px) {
+  .contact-container .grid.two-col > div:first-child {
+    display: block;
+  }
+}
+
+/* Form */
+.contact-form {
+  max-width: 400px;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+}
+.contact-form .form-row {
+  margin-bottom: 18px; /* vertical gap between fields */
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #113826;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(15, 63, 43, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  color: #113826;
+  font-size: 1rem;
+  box-shadow: none;
+  transition:
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+/* Permanent +27 prefix inside the phone field */
+.phone-input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.phone-prefix {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  z-index: 2;
+  transform: translateY(-50%);
+  color: #113826;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.contact-form .phone-input-wrap input {
+  width: 100%;
+  padding-left: 58px;
+  box-sizing: border-box;
+}
+.contact-form textarea {
+  height: 140px;
+  min-height: 140px;
+  max-height: 140px;
+  resize: none;
+  box-sizing: border-box;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(15, 63, 43, 0.28);
+  box-shadow: 0 6px 18px rgba(15, 63, 43, 0.06);
+}
+
+/* form selects + placeholders */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(15, 63, 43, 0.32);
+}
+
+/* match select to inputs */
+.contact-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(15, 63, 43, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  color: #113826;
+  font-size: 1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(17, 56, 38, 0.9) 50%),
+    linear-gradient(135deg, rgba(17, 56, 38, 0.9) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(1em + 2px),
+    calc(100% - 13px) calc(1em + 2px);
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+}
+
+/* focus state for select */
+.contact-form select:focus {
+  outline: none;
+  border-color: rgba(15, 63, 43, 0.28);
+  box-shadow: 0 6px 18px rgba(15, 63, 43, 0.06);
+}
+
+/* smaller screens: keep spacing */
+@media (max-width: 900px) {
+  .contact-form {
+    max-width: 100%;
+  }
+}
+
+/* Contact column */
+.contact-container .contact-lead {
+  margin-bottom: 18px;
+  color: #244d3c;
+  line-height: 1.6;
+}
+
+/* phone pill in contact column */
+.phone-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid #0f3f2b;
+  color: #0f3f2b;
+  font-weight: 700;
+  text-decoration: none;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(4, 30, 18, 0.06);
+}
+
+/* contact actions row (buttons) */
+.contact-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+/* map placeholder */
+.map-placeholder img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 320px;
+}
+
+/* responsive: stack contact columns on small screens */
+@media (max-width: 900px) {
+  .contact-container .grid.two-col {
+    display: block;
+  }
+  .contact-container .grid.two-col > div {
+    max-width: 820px;
+    margin: 0 auto 28px;
+  }
+  .contact-actions {
+    justify-content: flex-start;
+  }
+  .phone-pill {
+    display: inline-block;
+  }
+}
+
+/* Contact panel (right column) with icons */
+.contact-panel {
+  max-width: 380px;
+  /* keep on the right side of the two-col grid */
+  display: flex;
+  flex-direction: column;
+  gap: 22px; /* increased vertical spacing between sections */
+  margin-top: 0;
+
+  /* vertically centre the panel inside the two-column grid row */
+  align-self: center;
+}
+
+.contact-panel h2 {
+  margin: 0 0 6px;
+  color: var(--brand);
+}
+.contact-panel .contact-lead {
+  margin: 0 0 20px;
+  color: rgba(17, 56, 38, 0.95);
+  line-height: 1.5;
+}
+
+/* list of contact rows */
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* more breathing room between list items */
+}
+.contact-item {
+  display: flex;
+  gap: 18px; /* more space between icon and text */
+  align-items: center;
+  padding: 6px 0; /* subtle vertical padding per row */
+}
+.contact-icon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: block;
+  filter: none; /* keep your SVG colours; adjust with filter if needed */
+  border-radius: 10px;
+  background: transparent;
+  padding: 6px;
+  margin-right: 6px; /* ensure icon doesn't sit tight against text on older browsers */
+}
+
+/* WhatsApp CTA spacing */
+.btn.whatsapp.large {
+  margin-top: 6px;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* small-screen adjustments */
+@media (max-width: 900px) {
+  .contact-panel {
+    max-width: 100%;
+    margin-top: 48px;
+    align-self: auto;
+  }
+  .contact-list {
+    gap: 16px;
+  }
+  .contact-item {
+    gap: 12px;
+    padding: 4px 0;
+  }
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+}
+
+/* contact panel links: remove browser underline, use brand colour and add subtle hover underline */
+.contact-panel a,
+.contact-panel .contact-value {
+  color: rgba(0, 0, 0, 0.56);
+  text-decoration: none;
+  font-weight: 100;
+}
+
+.contact-panel a:hover,
+.contact-panel a:focus,
+.contact-panel .contact-value:hover,
+.contact-panel .contact-value:focus {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  outline: none;
+}
+
+/* Contact item titles + subtext (match other items) */
+.contact-title {
+  margin: 0;
+  font-weight: 800;
+  color: var(--brand);
+  font-size: 1rem; /* consistent size for the label */
+  line-height: 1.15;
+}
+
+.contact-sub {
+  margin-top: 4px;
+  color: rgba(0, 0, 0, 0.56);
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+/* Ensure contact-value (links) use the same visual weight but remain link accessible */
+.contact-value {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--brand-dark);
+  text-decoration: none;
+}
+
+/* Defensive: if a heading element is used inside contact-item, scale it down */
+.contact-item h3,
+.contact-item h4,
+.contact-item h5 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.footer-right .contact-icon img {
+  filter: brightness(0) invert(1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact-form .is-invalid,
+.contact-form .is-invalid:focus {
+  border-color: #b42318;
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.1);
+}
+
+.field-error {
+  display: block;
+  margin: 6px 4px 0;
+  color: #b42318;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.form-success {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 32px;
+  border: 1px solid rgba(15, 63, 43, 0.12);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #effaf5);
+  color: #113826;
+  text-align: center;
+  box-shadow: 0 18px 42px rgba(4, 30, 18, 0.08);
+}
+
+.form-success[hidden] {
+  display: none;
+}
+
+.form-success:focus {
+  outline: none;
+}
+
+.form-success .success-icon {
+  display: inline-grid;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: #0f3f2b;
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(15, 63, 43, 0.2);
+}
+
+.form-success h2 {
+  margin: 0 0 10px;
+  color: #0f3f2b;
+}
+
+.form-success p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .form-success {
+    max-width: 100%;
+    padding: 32px 22px;
+  }
+}
+
+.bot-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-submit-error {
+  margin: 14px 0 0;
+  color: #b42318;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.form-submit-error[hidden] {
+  display: none;
+}

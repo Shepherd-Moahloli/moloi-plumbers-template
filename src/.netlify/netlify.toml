@@ -1,0 +1,26 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/2026 PROJECTS/14. PLUMBERS - TEMPLATE/moloi-plumbers-template"
+publishOrigin = "default"
+base = "/Users/mac/Library/Mobile Documents/com~apple~CloudDocs/2026 PROJECTS/14. PLUMBERS - TEMPLATE/moloi-plumbers-template"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]

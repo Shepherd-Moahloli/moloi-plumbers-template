@@ -1,0 +1,3 @@
+{
+  "git.blame.editorDecoration.template": "${subject}, ${authorName} (${authorDateAgo})"
+}
