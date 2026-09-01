@@ -258,7 +258,7 @@ nav a:hover {
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 4.1rem;
   margin: 0 0 12px;
   line-height: 1.2;
 }
@@ -267,6 +267,10 @@ nav a:hover {
   font-size: 1.8rem;
   margin: 0 0 18px;
   line-height: 1.5;
+}
+
+.hero-copy-left {
+  width: 700px;
 }
 
 .hero-ctas {
