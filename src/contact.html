@@ -104,25 +104,23 @@
               class="contact-form"
               id="contact-form"
               name="contact"
+              action="/"
               method="POST"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               novalidate
             >
-              <!-- Netlify form detection -->
               <input type="hidden" name="form-name" value="contact" />
+
               <input
                 type="hidden"
-                name="_subject"
-                value="New Allset Projects website enquiry"
+                name="subject"
+                value="New Moloi Plumbers website enquiry"
+                data-remove-prefix
               />
 
-              <p class="bot-field" aria-hidden="true">
-                <label>
-                  Do not complete this field:
-                  <input name="bot-field" tabindex="-1" autocomplete="off" />
-                </label>
-              </p>
+              <!-- removed visible honeypot label/input; keep hidden honeypot for Netlify -->
+              <input type="hidden" name="bot-field" />
 
               <div class="form-row">
                 <label class="sr-only" for="name">Your name</label>
